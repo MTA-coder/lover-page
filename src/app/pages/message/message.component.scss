@@ -1,0 +1,135 @@
+//colors
+$theme-blue: #B4D2EE;
+$theme-blue-dull: #D3EAFD;
+$theme-white: #FFF;
+$theme-black: #444;
+$theme-red: #C51803;
+//env dimensions
+$env-width: 150px;
+$env-height: 100px;
+//heart properties
+$heart-width: 15px;
+$heart-height: 15px;
+//animation-delay
+$unlock-wrapper: 0.4s;
+$open-close-envelop: $unlock-wrapper+0.3s;
+$show-note: $unlock-wrapper+0.6s;
+$lock-wrapper: $open-close-envelop+0.3s;
+//animation-duration
+$animation-duration: 0.5s;
+$card-animation-duration: 1s;
+.bg-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $theme-black;
+    .envelope-wrapper {
+        background: $theme-blue;
+        .envelope {
+            position: relative;
+            width: $env-width;
+            height: $env-height;
+            &:before {
+                content: "";
+                position: absolute;
+                top: 0px;
+                z-index: 2;
+                border-top: ($env-height/2) + 5px solid $theme-blue-dull;
+                border-right: $env-width/2 solid transparent;
+                border-left: $env-width/2 solid transparent;
+                transform-origin: top;
+                transition: all $animation-duration ease-in-out $open-close-envelop;
+            }
+            &:after {
+                content: "";
+                position: absolute;
+                z-index: 2;
+                width: 0px;
+                height: 0px;
+                border-top: $env-height/2 solid transparent;
+                border-right: $env-width/2 solid $theme-blue;
+                border-bottom: $env-height/2 solid $theme-blue;
+                border-left: $env-width/2 solid $theme-blue;
+            }
+            .card {
+                position: absolute;
+                right: 20%;
+                bottom: 0;
+                width: 60%;
+                height: 90%;
+                background: $theme-white;
+                text-align: center;
+                transition: all $card-animation-duration ease-in-out;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+                .close-icon {
+                    position: absolute;
+                    right: 5px;
+                    top: 5px;
+                    font-size: 10px;
+                    color: rgba($theme-black, 0.7);
+                    cursor: pointer;
+                }
+                .text {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    font-family: "Great Vibes", cursive;
+                    color: $theme-red;
+                    transform: translate(-50%, -50%);
+                }
+            }
+        }
+        .heart {
+            position: absolute;
+            top: 57%;
+            left: 50%;
+            width: $heart-width;
+            height: $heart-height;
+            background: $theme-red;
+            z-index: 4;
+            transform: translate(-50%, -20%) rotate(45deg);
+            transition: transform $animation-duration ease-in-out $lock-wrapper;
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+            cursor: pointer;
+            &:before,
+            &:after {
+                content: "";
+                position: absolute;
+                width: $heart-width;
+                height: $heart-width;
+                background-color: $theme-red;
+                border-radius: 50%;
+            }
+            &:before {
+                top: -($heart-width/2);
+            }
+            &:after {
+                right: $heart-width/2;
+            }
+        }
+    }
+    .flap {
+        .envelope {
+            &:before {
+                transform: rotateX(180deg);
+                z-index: 0;
+            }
+            .card {
+                bottom: 100px;
+                transform: scale(1.5);
+                transition-delay: $show-note;
+            }
+        }
+        .heart {
+            transform: rotate(90deg);
+            transition-delay: $unlock-wrapper;
+        }
+    }
+}
+
+.close-icon {
+    font-size: 10px;
+    right: 5px;
+    position: absolute;
+}

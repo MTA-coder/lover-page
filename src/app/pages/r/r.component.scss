@@ -1,0 +1,163 @@
+$color: wheat;
+body {
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+:host ::ng-deep p,
+a {
+    text-shadow: 0 0 8px rgba(lighten($color, 50%), 0.3);
+    font-family: "LoveCrush" !important;
+    font-smoothing: antialiased;
+    margin: 0.8em 0;
+    font-size: 18px;
+    color: $color;
+}
+
+.ghost,
+.glitch {
+    opacity: 0.25;
+}
+
+#message {
+    margin-left: -300px;
+    margin-top: -130px;
+    position: absolute;
+    height: 36 0px;
+    width: 600px;
+    left: 50%;
+    top: 50%;
+}
+
+#animate {
+    $color: darken(desaturate($color, 10%), 30%);
+    text-shadow: 0 0 8px rgba(lighten($color, 50%), 0.1);
+    position: absolute;
+    color: $color;
+    bottom: -50px;
+}
+
+#container {
+    $color1: #20202D;
+    $color2: #101018;
+    $color3: #060612;
+    background: -webkit-radial-gradient(50% 50%, ellipse, $color1 0%, $color2 75%, $color3 100%);
+    background: -moz-radial-gradient(50% 50%, ellipse, $color1 0%, $color2 75%, $color3 100%);
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    &:before {
+        pointer-events: none;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        content: '';
+        left: 0;
+        top: 0;
+    }
+}
+
+// ====================================
+$coloreffect:rgba(163, 46, 46, 0.871);
+#message {
+    position: relative;
+    display: inline-block;
+    padding: 15px 30px;
+    letter-spacing: 4px;
+    font-size: 14px;
+    overflow: hidden;
+    transition: 0.2s;
+    cursor: pointer;
+    color: $coloreffect;
+}
+
+#message:hover {
+    // color: $coloreffect;
+    color: wheat;
+    background: $coloreffect;
+    box-shadow: 0 0 10px $coloreffect, 0 0 40px $coloreffect, 0 0 80px $coloreffect;
+    transition-delay: 1s;
+}
+
+#message span {
+    position: absolute;
+    display: block;
+}
+
+#message span:nth-child(1) {
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, $coloreffect);
+}
+
+#message:hover span:nth-child(1) {
+    left: 100%;
+    transition: 1s;
+}
+
+#message span:nth-child(3) {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, $coloreffect);
+}
+
+#message:hover span:nth-child(3) {
+    right: 100%;
+    transition: 1s;
+    transition-delay: 0.5s;
+}
+
+#message span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, $coloreffect);
+}
+
+#message:hover span:nth-child(2) {
+    top: 100%;
+    transition: 1s;
+    transition-delay: 0.25s;
+}
+
+#message span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, $coloreffect);
+}
+
+#message:hover span:nth-child(4) {
+    bottom: 100%;
+    transition: 1s;
+    transition-delay: 0.75s;
+}
+
+// ========================================================================
+* {
+    font-family: fantasy !important;
+}
+
+:host ::ng-deep app-r {
+    position: relative;
+}
+
+#number1 {
+    position: absolute;
+    top: 14rem;
+    left: 2rem;
+}
+
+#number2 {
+    position: absolute;
+    top: 14rem;
+    right: 2rem;
+}

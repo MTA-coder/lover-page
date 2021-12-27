@@ -1,0 +1,11 @@
+<div class="bg-wrapper">
+    <div class="envelope-wrapper" [ngClass]="{'flap': clicked}">
+        <div class="envelope">
+            <div class="card">
+                <span class="close-icon" (click)="clicked = false">X</span>
+                <div class="text">I Love you <br> I am sorry <br> <br></div>
+            </div>
+        </div>
+        <div class="heart" (click)="clicked = true"></div>
+    </div>
+</div>

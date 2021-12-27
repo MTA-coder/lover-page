@@ -1,0 +1,24 @@
+.col-md-4 {
+    text-align: center;
+}
+
+#heart1 {
+    fill: red;
+    &:hover {
+        fill: blue;
+    }
+}
+
+#heart2 {
+    fill: red;
+    &:hover {
+        fill: cyan;
+    }
+}
+
+#heart3 {
+    fill: red;
+    &:hover {
+        fill: lime;
+    }
+}
